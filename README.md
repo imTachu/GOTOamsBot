@@ -1,5 +1,8 @@
 # GOTOams Bot
 
+
+[![Build Status][travisci-badge]][travisci-builds] 
+
 This bot was created from a sample bot version given for the [GOTO Amazon Chatbot Challenge.][hackathon-main]
 
 
@@ -8,18 +11,19 @@ The objective of the competition is to take this sample bot and make a complete 
 
 ## Usage
 
-* You can ask the bot by a talk exact name
+* You can ask the bot by a talk exact name:
 
     Q: I want to know about _Real World Java 9_​ talk
 
     A: Real World Java 9 belongs to the Programming Languages track and will be presented by Trisha Gee at Administratiezaal on Wednesday 14 of June from 11:10 to 12:00.
 
-* Or you can ask the bot by a talk partial name
+* Or you can ask the bot by a talk partial name:
     Q: I want to know about oath talk
     
     A: The Scribe's Oath belongs to the Keynotes track and will be presented by Robert C. Martin at Effectenbeurszaal on Wednesday 14 of June from 17:10 to 18:00.
 
-* Or you can even ask the bot by some keywords that are not contained in any talk name (but that I found relevant)
+* Or you can even ask the bot by some keywords that are not contained in any talk name (but that I found relevant):
+    
     Q: Talks about ml
     
     A: I've found 3 talks matching your interest: 
@@ -68,3 +72,5 @@ This bot is available in Facebook Messenger.
 
 
 [hackathon-main]: http://www.amazondcn.com/challenge/index.html
+[travisci-badge]: https://travis-ci.com/imTachu/GOTOamsBot.svg?token=FXoqSPyhGxTJyV3aAbkJ&branch=master
+[travisci-builds]: https://travis-ci.com/imTachu/GOTOamsBot
