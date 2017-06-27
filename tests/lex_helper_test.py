@@ -12,3 +12,7 @@ def test_build_speakers_dict():
 
 def test_build_tracks_dict():
     assert len(lex_helper.build_tracks_slot()) == len(botcontrol.fetch_tracks())
+
+
+def test_build_locations_dict():
+    assert len(lex_helper.build_locations_slot()) == len(botcontrol.fetch_locations())

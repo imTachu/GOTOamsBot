@@ -13,6 +13,10 @@ def build_tracks_slot():
     return build_enum_dictionary(botcontrol.fetch_tracks())
 
 
+def build_locations_slot():
+    return build_enum_dictionary(botcontrol.fetch_locations())
+
+
 def build_enum_dictionary(value_list):
     content = []
     for i in value_list:
