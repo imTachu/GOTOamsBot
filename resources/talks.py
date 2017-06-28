@@ -43,7 +43,7 @@ TALKS = {
         'tags': ['cloud', 'amazon', 'trends']
     },
     'The Scribe\'s Oath': {
-        'speakers': ['Robert C. Martin'],
+        'speakers': ['Robert Martin'],
         'track': 'Keynotes',
         'location': 'Effectenbeurszaal',
         'start': datetime(2017, 6, 14, 17, 10),

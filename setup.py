@@ -8,7 +8,6 @@ from botocore.exceptions import ClientError
 
 ACCOUNT_ID = os.environ['AWS_ACCOUNT_ID']
 
-
 with ZipFile('lambda-package.zip', 'w') as myzip:
     myzip.write('botcontrol.py')
     myzip.write('resources/__init__.py')
@@ -49,7 +48,8 @@ about_talk_intent = {
                              u'type': u'CodeHook'},
     u'name': u'AboutTalk',
     u'sampleUtterances': [u'About {talk}', u'Tell me about {talk} talk', u'I wanna know about {talk} talk',
-                          u'I want to know about {talk} talk', u'What talks are about {talk}', u'Talks about {talk}', u'About that talk', u'About a talk'],
+                          u'I want to know about {talk} talk', u'What talks are about {talk}', u'Talks about {talk}',
+                          u'About that talk', u'About a talk', u'About any talk'],
     u'slots': [{u'name': u'talk',
                 u'priority': 1,
                 u'sampleUtterances': [],
@@ -57,14 +57,17 @@ about_talk_intent = {
                 u'slotType': u'Talks',
                 u'slotTypeVersion': u'$LATEST',
                 u'valueElicitationPrompt': {u'maxAttempts': 2,
-                                            u'messages': [{u'content': u'What talk? You don\'t have to tell me the full name, maybe just a keyword. For example, cloud, LEGO, ml.', u'contentType': u'PlainText'}]}}],
+                                            u'messages': [{
+                                                u'content': u'What talk? You don\'t have to tell me the full name, maybe just a keyword. For example, cloud, LEGO, ml.',
+                                                u'contentType': u'PlainText'}]}}],
 }
 
 who_is_the_speaker_intent = {
     u'dialogCodeHook': {u'messageVersion': u'1.0',
                         u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)},
     u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0',
-                                           u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)},
+                                           u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(
+                                               ACCOUNT_ID)},
                              u'type': u'CodeHook'},
     u'name': u'WhoIsTheSpeaker',
     u'sampleUtterances': [u'Who is the speaker', u'Who are the speakers', u'Who is him', u'Who is her'],
@@ -82,14 +85,17 @@ who_is_the_speaker_intent = {
 whats_the_schedule_intent = {
     u'dialogCodeHook': {u'messageVersion': u'1.0',
                         u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)},
-    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0', u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)}, u'type': u'CodeHook'},
+    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0',
+                                           u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(
+                                               ACCOUNT_ID)}, u'type': u'CodeHook'},
     u'name': u'WhatsTheSchedule',
-    u'sampleUtterances': [u'What\'s the conference is the schedule', u'What is the schedule', u'What is the timetable', u'Timetable', u'Schedule', u'What is the schedule on {when}'],
+    u'sampleUtterances': [u'What\'s the conference schedule', u'What is the schedule', u'What is the timetable',
+                          u'Timetable', u'Schedule', u'Schedule on {when}'],
     u'slots': [{u'name': u'when',
                 u'priority': 1,
                 u'sampleUtterances': [],
                 u'slotConstraint': u'Required',
-                u'slotType': u'AMAZON.TIME',
+                u'slotType': u'AMAZON.DATE',
                 u'valueElicitationPrompt': {u'maxAttempts': 2,
                                             u'messages': [{u'content': u'When?', u'contentType': u'PlainText'}]}}],
 }
@@ -97,7 +103,9 @@ whats_the_schedule_intent = {
 about_tracks_intent = {
     u'dialogCodeHook': {u'messageVersion': u'1.0',
                         u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)},
-    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0', u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)}, u'type': u'CodeHook'},
+    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0',
+                                           u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(
+                                               ACCOUNT_ID)}, u'type': u'CodeHook'},
     u'name': u'AboutTracks',
     u'sampleUtterances': [u'{track} track', u'Track {track}'],
     u'slots': [{u'name': u'track',
@@ -106,23 +114,60 @@ about_tracks_intent = {
                 u'slotConstraint': u'Required',
                 u'slotType': u'Tracks',
                 u'slotTypeVersion': u'$LATEST',
-                u'valueElicitationPrompt': {u'maxAttempts': 2, u'messages': [{u'content': u'What track?', u'contentType': u'PlainText'}]}}],
+                u'valueElicitationPrompt': {u'maxAttempts': 2, u'messages': [
+                    {u'content': u'What track?', u'contentType': u'PlainText'}]}}],
 }
 
 about_locations_intent = {
     u'dialogCodeHook': {u'messageVersion': u'1.0',
                         u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)},
-    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0', u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)}, u'type': u'CodeHook'},
+    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0',
+                                           u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(
+                                               ACCOUNT_ID)}, u'type': u'CodeHook'},
     u'name': u'AboutLocations',
-    u'sampleUtterances': [u'{location} room', u'Room {location}', u'What will be presented in {location}', u'What will be presented'],
+    u'sampleUtterances': [u'{location} room', u'Room {location}', u'What will be presented in {location}',
+                          u'What will be presented'],
     u'slots': [{u'name': u'location',
                 u'priority': 1,
                 u'sampleUtterances': [],
                 u'slotConstraint': u'Required',
                 u'slotType': u'Locations',
                 u'slotTypeVersion': u'$LATEST',
-                u'valueElicitationPrompt': {u'maxAttempts': 2, u'messages': [{u'content': u'In what room??', u'contentType': u'PlainText'}]}}],
+                u'valueElicitationPrompt': {u'maxAttempts': 2, u'messages': [
+                    {u'content': u'In what room??', u'contentType': u'PlainText'}]}}],
 }
+
+request_photos_intent = {
+    u'dialogCodeHook': {u'messageVersion': u'1.0',
+                        u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)},
+    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0',
+                                           u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(
+                                               ACCOUNT_ID)}, u'type': u'CodeHook'},
+    u'name': u'RequestPhotos',
+    u'sampleUtterances': [u'Photos of the event', u'Photos of the conference', u'any photos', u'any pictures',
+                          u'can I see some photos', u'can I see some pictures']
+}
+
+when_conference_intent = {
+    u'dialogCodeHook': {u'messageVersion': u'1.0',
+                        u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)},
+    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0',
+                                           u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(
+                                               ACCOUNT_ID)}, u'type': u'CodeHook'},
+    u'name': u'WhenConference',
+    u'sampleUtterances': [u'When is the conference', u'When is the next conference', u'When was the conference', u'What\'s the conference date']
+}
+
+contact_intent = {
+    u'dialogCodeHook': {u'messageVersion': u'1.0',
+                        u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(ACCOUNT_ID)},
+    u'fulfillmentActivity': {u'codeHook': {u'messageVersion': u'1.0',
+                                           u'uri': u'arn:aws:lambda:us-east-1:{}:function:botcontrol'.format(
+                                               ACCOUNT_ID)}, u'type': u'CodeHook'},
+    u'name': u'Contact',
+    u'sampleUtterances': [u'What\'s the conference contact', u'Conference social media', u'Twitter account', u'Are there videos']
+}
+
 
 """ Custom slot types """
 
@@ -156,11 +201,17 @@ bot = {
     u'childDirected': False,
     u'clarificationPrompt': {u'maxAttempts': 5,
                              u'messages': [{u'content': u'Sorry, can you please repeat that?',
-                                            u'contentType': u'PlainText'}]},
+                                            u'contentType': u'PlainText'},
+                                           {u'content': u'I didn\'n get that :( can you please try something else?',
+                                            u'contentType': u'PlainText'}, {u'content': u'I beg you pardon?',
+                                                                            u'contentType': u'PlainText'}]},
     u'intents': [{u'intentName': u'WhoIsTheSpeaker', u'intentVersion': u'$LATEST'},
                  {u'intentName': u'WhatsTheSchedule', u'intentVersion': u'$LATEST'},
                  {u'intentName': u'AboutTracks', u'intentVersion': u'$LATEST'},
                  {u'intentName': u'AboutLocations', u'intentVersion': u'$LATEST'},
+                 {u'intentName': u'RequestPhotos', u'intentVersion': u'$LATEST'},
+                 {u'intentName': u'WhenConference', u'intentVersion': u'$LATEST'},
+                 {u'intentName': u'Contact', u'intentVersion': u'$LATEST'},
                  {u'intentName': u'AboutTalk', u'intentVersion': u'$LATEST'}],
     u'locale': u'en-US',
     u'name': u'GOTOamsBot',
@@ -240,6 +291,30 @@ except ClientError, e:
 try:
     lex.delete_intent(name='AboutLocations')
     print 'Deleted intent AboutLocations'
+    wait(3)
+except ClientError, e:
+    if e.response['Error']['Code'] != 'NotFoundException':
+        raise
+
+try:
+    lex.delete_intent(name='RequestPhotos')
+    print 'Deleted intent RequestPhotos'
+    wait(3)
+except ClientError, e:
+    if e.response['Error']['Code'] != 'NotFoundException':
+        raise
+
+try:
+    lex.delete_intent(name='WhenConference')
+    print 'Deleted intent WhenConference'
+    wait(3)
+except ClientError, e:
+    if e.response['Error']['Code'] != 'NotFoundException':
+        raise
+
+try:
+    lex.delete_intent(name='Contact')
+    print 'Deleted intent Contact'
     wait(3)
 except ClientError, e:
     if e.response['Error']['Code'] != 'NotFoundException':
@@ -328,6 +403,18 @@ print 'Created WhoIsTheSpeaker intent'
 lex.put_intent(**whats_the_schedule_intent)
 wait(3)
 print 'Created WhatsTheSchedule intent'
+
+lex.put_intent(**request_photos_intent)
+wait(3)
+print 'Created RequestPhotos intent'
+
+lex.put_intent(**when_conference_intent)
+wait(3)
+print 'Created WhenConference intent'
+
+lex.put_intent(**contact_intent)
+wait(3)
+print 'Created Contact intent'
 
 lex.put_bot(**bot)
 wait(3)

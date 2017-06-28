@@ -6,7 +6,7 @@ SPEAKERS = {
     },
     'Adrian Cockcroft': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/1/thumb.jpg',
-        'headline': 'Vice President Cloud Architecture Strategy at Amazon Web Services',
+        'headline': 'Vice President Cloud Architecture Strategy at AWS',
         'twitter': 'adrianco'
     },
     'Adrian Mouat': {
@@ -21,12 +21,12 @@ SPEAKERS = {
     },
     'Andrea Provaglio': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/92/thumb.jpg',
-        'headline': 'Agile Organizational Coach & Strategic IT Consultant',
+        'headline': 'Agile Organizational Coacht',
         'twitter': 'andreaprovaglio'
     },
     'Antonio Almeida': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/104/thumb.jpg',
-        'headline': 'Developer, Product Evangelist & Tech Docs PO'
+        'headline': 'Product Evangelist & Tech Docs PO'
     },
     'Attila Houtkooper': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/209/thumb.png',
@@ -48,12 +48,12 @@ SPEAKERS = {
     },
     'Chris Heilmann': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/46/thumb.png',
-        'headline': 'Senior Program Manager Developer Experience & Evangelism at Microsoft',
+        'headline': 'Senior Program Manager Developer Experience at Microsoft',
         'twitter': 'codepo8'
     },
     'Chris Valasek': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/107/thumb.jpg',
-        'headline': 'Security Lead at Uber\'s Advanced Technology Center & Renowned \'White Hat\' Hacker',
+        'headline': 'Security Lead at Uber\'s Advanced Technology Center',
         'twitter': 'nudehaberdasher'
     },
     'Chris Young': {
@@ -68,7 +68,7 @@ SPEAKERS = {
     },
     'Dan North': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/39/thumb.png',
-        'headline': 'Originator of Behavior Driven Development (BDD) & Principal Consultant',
+        'headline': 'Originator of Behavior Driven Development',
         'twitter': 'tastapod'
     },
     'David Stibbe': {
@@ -97,7 +97,7 @@ SPEAKERS = {
     },
     'Fred George': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/6/thumb.jpg',
-        'headline': 'Early Adopter of OO & Agile, Advocating MicroServices & Programmer Anarchy',
+        'headline': 'Early Adopter of OO & Agile',
         'twitter': 'fgeorge52'
     },
     'Friso van Vollenhoven': {
@@ -243,16 +243,16 @@ SPEAKERS = {
     },
     'Rafal Kuklinski': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/179/thumb.jpg',
-        'headline': 'Amazon Text-to-Speech Technology Team Lead & MD at Amazon Development Center'
+        'headline': 'Amazon Text-to-Speech Technology Team Lead'
     },
     'Ray Tsang': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/85/thumb.jpeg',
         'headline': 'Developer Advocate for the Google Cloud Platform',
         'twitter': 'saturnism'
     },
-    'Robert C. Martin (Uncle Bob)': {
+    'Robert Martin': {
         'photo': 'https://conf-assets.s3.eu-central-1.amazonaws.com/uploads/portraits/161/thumb.png',
-        'headline': 'Author of "Clean Code" & "The Clean Coder", Co-author of the Agile Manifesto',
+        'headline': 'Author of Clean Code & The Clean Coder',
         'twitter': 'unclebobmartin'
     },
     'Robert Saxby': {
