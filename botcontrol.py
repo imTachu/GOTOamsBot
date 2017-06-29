@@ -116,34 +116,8 @@ def about_talk(intent_request):
     slots = get_slots(intent_request)
     talk_slot = str(slots['talk'])
 
-    # if source == 'DialogCodeHook':
-    #     # Perform basic validation on the supplied input slots.
-    #     # Use the elicitSlot dialog action to re-prompt for the first violation detected.
-    #
-    #     validation_result = validate_when(when_slot)
-    #     if not validation_result['isValid']:
-    #         slots[validation_result['violatedSlot']] = None
-    #         return elicit_slot(intent_request['sessionAttributes'],
-    #                            intent_request['currentIntent']['name'],
-    #                            slots,
-    #                            validation_result['violatedSlot'],
-    #                            validation_result['message'])
-    #
-    #     output_session_attributes = intent_request['sessionAttributes'] if intent_request[
-    #                                                                            'sessionAttributes'] is not None else {}
-    #     talk = TIMETABLE[when_slot]
-    #     output_session_attributes['speaker'] = talk[
-    #         'speaker']  # store for a follow-up with the 'Who is the speaker' intent.
-    #
-    #     return delegate(output_session_attributes, get_slots(intent_request))
-    #
-    # logger.info('[what_is_on_now] All parameters are filled in, responding...')
-    # logger.info('[what_is_on_now] locals = {}'.format(locals()))
-    #
-    talks = list(
-        set([s for s in fetch_talks() if talk_slot.lower() in s.lower()]) | set(find_talks_by_tag(talk_slot.lower())))
-    output_session_attributes = intent_request['sessionAttributes'] if intent_request[
-                                                                           'sessionAttributes'] is not None else {}
+    talks = list(set([s for s in fetch_talks() if talk_slot.lower() in s.lower()]) | set(find_talks_by_tag(talk_slot.lower())))
+    output_session_attributes = intent_request['sessionAttributes'] if intent_request['sessionAttributes'] is not None else {}
     if len(talks) == 0:
         response = 'I\'m sorry, I couldn\'t find any talk that contains \'' + talk_slot + '\'. Please try again :)'
     elif len(talks) == 1:
@@ -155,7 +129,6 @@ def about_talk(intent_request):
         for t in talks:
             talk = TALKS[t]
             response += format_about_talk_message(t, talk) + '\n'
-    print(response)
     return close(output_session_attributes,
                  'Fulfilled',
                  {'contentType': 'PlainText',
@@ -189,12 +162,12 @@ def about_locations(intent_request):
     slots = get_slots(intent_request)
     location_slot = str(slots['location'])
 
-    locations = [s for s in fetch_locations() if location_slot.lower() in s.lower()]
+    locations = [s for s in fetch_locations() if location_slot.lower() == s.lower()]
     logger.info(locations)
     if len(locations) == 0:
-        response = 'I\'m sorry, I couldn\'t find any track \'' + location_slot + '\'. Please try again :)'
+        response = 'I\'m sorry, I couldn\'t find any location \'' + location_slot + '\'. Please try again :)'
     elif len(locations) == 1:
-        response = format_about_locations_message(locations[0])
+        response = format_about_locations_message(locations)
     else:
         response = 'I\'ve found ' + str(len(locations)) + ' locations matching your interest: \n\n'
         for l in locations:
@@ -307,12 +280,13 @@ def format_about_tracks_message(track_name):
     talks = find_talks_by_track(track_name)
     talk = TALKS[talks[0]]
     return track_name + ' will be presented at ' + talk['location'] + ' on ' + talk['start'].strftime(
-        '%A %d of %B') + '.\nIts talks are: \n*' + ',\n* '.join(talks)
+        '%A %d of %B') + '.\nIts talks are: \n* ' + ',\n* '.join(talks)
 
 
 def format_about_locations_message(location):
-    tracks = find_tracks_by_location(location)
-    return location + ' will host tracks' + ', '.join(tracks)
+    tracks = find_tracks_by_location(location[0])
+    print(tracks)
+    return location[0] + ' room will host tracks: \n* ' + ',\n* '.join(tracks)
 
 
 def fetch_tags():
@@ -372,7 +346,7 @@ def find_tracks_by_location(location):
     response = []
     for talk in TALKS:
         if TALKS[talk]['location'] == location:
-            response.append(talk['track'])
+            response.append(TALKS[talk]['track'])
     return list(set(response))
 
 
