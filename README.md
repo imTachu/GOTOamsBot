@@ -3,11 +3,7 @@
 
 [![Build Status][travisci-badge]][travisci-builds] 
 
-This bot was created from a sample bot version given for the [GOTO Amazon Chatbot Challenge.][hackathon-main]
-
-
-The objective of the competition is to take this sample bot and make a complete chatbot to navigate conference schedules, ask information about the speakers, rooms, tracks etc. You can improve it in various ways: making it respond to voice commands, build a mobile app, integrate with SMS, email, facebook, slack. Also new ideas are welcome!
-
+This bot was created for the [GOTO Amazon Chatbot Challenge.][hackathon-main]
 
 ## Usage
 
@@ -31,10 +27,20 @@ The objective of the competition is to take this sample bot and make a complete 
     Machine Learning, Your First Steps belongs to the Solutions Wednesday track and will be presented by David Stibbe at Keurzaal on Wednesday 14 of June from 10:10 to 11:00.
     Machine Learning with TensorFlow belongs to the Machine Learning without a PhD track and will be presented by Robert Saxby and Rokesh Jankie at Veilingzaal on Tuesday 13 of June from 15:00 to 15:50.
 
+----------------
+
+* When you ask about a talk, you can then also ask for the speaker (Or if you ask for the speaker before asking for a talk, you will be prompted with the speaker name)
+
+Q: I want to know about lego
+A: REST no more - Using Actors for the Internet of (LEGO) Trains & Raspberry Pis belongs to the Cyber-Physical Systems track and will be presented by Johan Janssen at Veilingzaal on Wednesday 14 of June from 14:00 to 14:50.
+Tachú
+
 Q: Who is the speaker?
-A: Inventor
+A: <Speaker picture> Johan Janssen. Twitter: johanjanssen42
 
+----------------
 
+There are many more questions you can ask the chatbot, I made a super flash demo [here.][demo-video]
 
 ## Development considerations
 
@@ -43,34 +49,31 @@ A: Inventor
 * Besides setting up AWS credentials, this project relies on AWS account ID, this is set via the environment variable `AWS_ACCOUNT_ID` _see_ [setup.py, line 4](setup.py)
 * I included another [deployment script](deploy.sh) because I needed to rapidly deploy my AWS Lambda function without touching anything in AWS Lex
 
-### Package contents
+## Package contents
 ----------------
 
 This package contains a sample bot to get you started quickly. The sample bot consists of:
 
-1 - An Amazon API gateway, so that your bot is accessible via a simple REST HTTP API. See app.py.
-2 - An Amazon Lambda function invoked by the API gateway. This function passes the HTTP request contents to Amazon Lex, which does the natural language processing. Here you can add some more logic before or after Lex runs. See app.py.
-3 - An Amazon Lex bot. You can ask which talks are happening at a certain time and details about the speaker. See setup.py.
-4 - Another Amazon Lambda function, invoked by Lex for control and validation of results of the Lex bot. See botcontrol.py.
-5 - A script (setup.py) that will setup the components above in your AWS account, so you can start hacking quickly! 
+1 - An Amazon Lex bot. You can ask which talks are happening at a certain time and details about the speaker. See setup.py.
+2 - Another Amazon Lambda function, invoked by Lex for control and validation of results of the Lex bot. See botcontrol.py.
+3 - The resources folder that contains the datasources necessary for the chatbot.
+4 - A [full deployment script](setup.sh) that will setup the components above in your AWS account.
+5 - A [lambda quickly deployment script](deploy.sh) because I needed to rapidly deploy my AWS Lambda function without touching anything in AWS Lex.
 
-Setup steps
------------
+## Know "issues"
+----------------
 
-1 - Configure your AWS access key and secret key according to https://github.com/awslabs/chalice#credentials . DO NOT publish your access key and secret key to public sites such as github!
-2 - Create a virtual env for your bot with "virtualenv .". The examples below assume you are inside the virtualenv. See http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/ for more details. 
-3 - Configure your AWS account id in an environment variable `AWS_ACCOUNT_ID`
-4 - Run: "source bin/activate"
-5 - Run: "pip install -r requirements.txt"
-6 - Run: "python setup.py"
+* There are some _small_ known things this chatbot won't handle very well: For example, if a talk has more than one speaker, I will only save in the session attributes the first one. This needs to be improved.
 
-How to use the bot
+
+##How to use the bot
 ------------------
 
-This bot is available in Facebook Messenger. 
-
+This bot was installed in Facebook Messenger, at the moment only the specified users in the competition can chat with it. It is available [here][messenger-chatbot]
 
 
 [hackathon-main]: http://www.amazondcn.com/challenge/index.html
 [travisci-badge]: https://travis-ci.com/imTachu/GOTOamsBot.svg?token=FXoqSPyhGxTJyV3aAbkJ&branch=master
 [travisci-builds]: https://travis-ci.com/imTachu/GOTOamsBot
+[messenger-chatbot]: https://www.messenger.com/t/244400059380375
+[demo-video]: https://www.youtube.com/watch?v=moMGkIe6eH0
