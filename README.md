@@ -31,12 +31,11 @@ This bot was created for the [GOTO Amazon Chatbot Challenge.][hackathon-main]
 
 * When you ask about a talk, you can then also ask for the speaker (Or if you ask for the speaker before asking for a talk, you will be prompted with the speaker name)
 
-Q: I want to know about lego
-A: REST no more - Using Actors for the Internet of (LEGO) Trains & Raspberry Pis belongs to the Cyber-Physical Systems track and will be presented by Johan Janssen at Veilingzaal on Wednesday 14 of June from 14:00 to 14:50.
-Tachú
+    Q: I want to know about lego
+    A: REST no more - Using Actors for the Internet of (LEGO) Trains & Raspberry Pis belongs to the Cyber-Physical Systems      track and will be presented by Johan Janssen at Veilingzaal on Wednesday 14 of June from 14:00 to 14:50.
 
-Q: Who is the speaker?
-A: <Speaker picture> Johan Janssen. Twitter: johanjanssen42
+    Q: Who is the speaker?
+    A: <Speaker picture> Johan Janssen. Twitter: johanjanssen42
 
 ----------------
 
@@ -55,9 +54,13 @@ There are many more questions you can ask the chatbot, I made a super flash demo
 This package contains a sample bot to get you started quickly. The sample bot consists of:
 
 1 - An Amazon Lex bot. You can ask which talks are happening at a certain time and details about the speaker. See setup.py.
+
 2 - Another Amazon Lambda function, invoked by Lex for control and validation of results of the Lex bot. See botcontrol.py.
+
 3 - The resources folder that contains the datasources necessary for the chatbot.
+
 4 - A [full deployment script](setup.sh) that will setup the components above in your AWS account.
+
 5 - A [lambda quickly deployment script](deploy.sh) because I needed to rapidly deploy my AWS Lambda function without touching anything in AWS Lex.
 
 ## Know "issues"
