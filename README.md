@@ -49,7 +49,6 @@ There are many more questions you can ask the chatbot, I made a super flash demo
 * I included another [deployment script](deploy.sh) because I needed to rapidly deploy my AWS Lambda function without touching anything in AWS Lex
 
 ## Package contents
-----------------
 
 This package contains a sample bot to get you started quickly. The sample bot consists of:
 
@@ -64,13 +63,11 @@ This package contains a sample bot to get you started quickly. The sample bot co
 5 - A [lambda quickly deployment script](deploy.sh) because I needed to rapidly deploy my AWS Lambda function without touching anything in AWS Lex.
 
 ## Know "issues"
-----------------
 
 * There are some _small_ known things this chatbot won't handle very well: For example, if a talk has more than one speaker, I will only save in the session attributes the first one. This needs to be improved.
 
 
-##How to use the bot
-------------------
+## How to use the bot
 
 This bot was installed in Facebook Messenger, at the moment only the specified users in the competition can chat with it. It is available [here][messenger-chatbot]
 
