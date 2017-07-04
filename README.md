@@ -9,7 +9,7 @@ This bot was created for the [GOTO Amazon Chatbot Challenge.][hackathon-main]
 
 * You can ask the bot by a talk exact name:
 
-    Q: I want to know about _Real World Java 9_​ talk
+    Q: I want to know about _Real World Java 9_ talk
 
     A: Real World Java 9 belongs to the Programming Languages track and will be presented by Trisha Gee at Administratiezaal on Wednesday 14 of June from 11:10 to 12:00.
 
@@ -66,6 +66,7 @@ This package contains a sample bot to get you started quickly. The sample bot co
 
 * There are some _small_ known things this chatbot won't handle very well: For example, if a talk has more than one speaker, I will only save in the session attributes the first one. This needs to be improved.
 
+* You can install the chatbot in a fresh AWS account and it will work, but please test it on Facebook Messenger as there are some intents that will use response cards and you will miss all their beautiness using the test env.
 
 ## How to use the bot
 
