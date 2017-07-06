@@ -258,7 +258,7 @@ def contact(intent_request):
                 'type': 'Close',
                 'fulfillmentState': 'Fulfilled',
                 'message': {'contentType': 'PlainText',
-                            'content': 'Here is the conferece social media. Keep in touch! ;)'},
+                            'content': 'Here is the conference social media. Keep in touch! ;)'},
                 'responseCard': {'version': '0',
                                  'contentType': 'application/vnd.amazonaws.card.generic',
                                  'genericAttachments': [{
